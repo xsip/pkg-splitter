@@ -3,7 +3,7 @@ import fs from "fs";
 import {PkgJson} from "./interfaces";
 import {execSync} from "child_process";
 
-export const install = (packages: string[], project: string) => {
+export const installToProject = (packages: string[], project: string) => {
     const matchingProject = collectDepFiles('./src')?.find((p: string) => p.includes(project));
     const projectDeps: PkgJson = JSON.parse(fs.readFileSync(matchingProject, 'utf-8'));
     let originalPackageJson: PkgJson = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
